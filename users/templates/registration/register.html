@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+   
+
+    <style>
+        .login--wrapper {
+            display: flex;
+            align-items: center;
+            height: 80vh;
+            justify-content: center;
+        }
+
+        .form {
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="login--wrapper">
+
+          
+            <form method='post'>
+                <h1>Register</h1>
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">{{field.label}}</label>
+                    {{field}}
+                </div>
+                {% endfor %}
+                <input type="submit" value="Register" class="btn btn-primary">
+                <p>Already have an account <button><a href="{% url 'login' %}">Login</a></button></p>
+
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
+{% endblock %}
